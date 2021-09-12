@@ -1,21 +1,4 @@
 
-// ===> Gets array of song objects and sort by title <===
-function sortSongByTitle(){
-    player.songs.sort(function(name1, name2) {    
-        var nameA = name1.title.toUpperCase(); 
-        var nameB = name2.title.toUpperCase(); 
-        return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;   
-    });
-    return songs;
-}
-
-function sortPlaylistByTitle(){
-    player.playlists.sort(function(name1, name2) {    
-        var nameA = name1.name.toUpperCase(); 
-        var nameB = name2.name.toUpperCase(); 
-        return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;      
-    });
-}
 
 function addSongIntoTable(arrOfValues, classes, attributes){
     const SONG_COVER_ART = 0;
@@ -100,6 +83,24 @@ function addPlaylistIntoTable(arrOfValues, classes, attributes){
         }
     }
     return table;    
+}
+
+// ===> Gets array of song objects and sort by title <===
+function sortSongByTitle(){
+    player.songs.sort(function(name1, name2) {    
+        var nameA = name1.title.toUpperCase(); 
+        var nameB = name2.title.toUpperCase(); 
+        return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;   
+    });
+    return songs;
+}
+
+function sortPlaylistByTitle(){
+    player.playlists.sort(function(name1, name2) {    
+        var nameA = name1.name.toUpperCase(); 
+        var nameB = name2.name.toUpperCase(); 
+        return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;      
+    });
 }
 
 // ===> Reformat from seconds to MM:SS <===
