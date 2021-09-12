@@ -6,8 +6,22 @@
  */
 let currentSongPlaying = "";
 function playSong(songId) {
-    
+    const songObj = player.findSongByID(songId);
+    console.log("Playing " + songObj.title + " from " + songObj.album + " by " + songObj.artist + " | " + calcPlayTime(songObj.duration) + "."); 
+    const divID = "song" + songId;   
+    const div = document.getElementById(divID);    
+    if(currentSongPlaying === ''){
+        currentSongPlaying = divID;
+        div.classList.add("clicked");               
+    }
+    else{
+        const lastPlayedSongDiv = document.getElementById(currentSongPlaying);
+        currentSongPlaying = divID;
+        lastPlayedSongDiv.classList.remove("clicked");
+        div.classList.add("clicked"); 
+    }
 }
+
 
 /**
  * Creates a song DOM element based on a song object.
