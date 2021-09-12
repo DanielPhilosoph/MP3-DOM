@@ -7,6 +7,7 @@ const player = {
             artist: "Jinjer",
             duration: 242,
             coverArt: "./images/cover_art/jinjer_vortex.jpg",
+            url: 'https://www.youtube.com/watch?v=mMvV1ZiSTK4'
         },
         {
             id: 2,
@@ -15,6 +16,7 @@ const player = {
             artist: "Songleikr",
             duration: 160,
             coverArt: "./images/cover_art/songleikr_vinda.jpg",
+            url: 'https://www.youtube.com/watch?v=PNsmqxcNHjI'
         },
         {
             id: 7,
@@ -23,6 +25,8 @@ const player = {
             artist: "Sabaton",
             duration: 213,
             coverArt: "./images/cover_art/sabaton_shiroyama.jpg",
+            url: 'https://www.youtube.com/watch?v=Ylyqoxh-cXk'
+            
         },
         {
             id: 3,
@@ -31,6 +35,7 @@ const player = {
             artist: "AC/DC",
             duration: 292,
             coverArt: "./images/cover_art/acdc_thunderstruck.jpg",
+            url: 'https://www.youtube.com/watch?v=v2AC41dglnM'
         },
         {
             id: 4,
@@ -39,6 +44,7 @@ const player = {
             artist: "Orphaned Land",
             duration: 270,
             coverArt: "./images/cover_art/orphaned_land_all_is_one.jpg",
+            url: 'https://www.youtube.com/watch?v=Bds3FALcR7M'
         },
         {
             id: 5,
@@ -47,6 +53,7 @@ const player = {
             artist: "Full Trunk",
             duration: 259,
             coverArt: "./images/cover_art/full_trunk_as_a_stone.jpg",
+            url: "https://www.youtube.com/watch?v=o5Taqq_I1Ns"
         },
         {
             id: 6,
@@ -55,6 +62,7 @@ const player = {
             artist: "Wintersun",
             duration: 811,
             coverArt: "./images/cover_art/wintersun_sons_of_winter_and_stars.jpg",
+            url: "https://www.youtube.com/watch?v=ttoJ-Ro0L04"
         },
     ],
     playlists: [
@@ -70,4 +78,5 @@ const player = {
     findPlaylistByID(id){    
         return player.playlists.find(playlistObj => playlistObj.id === id);       
     },
+
 }

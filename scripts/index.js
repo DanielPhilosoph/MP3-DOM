@@ -12,13 +12,15 @@ function playSong(songId) {
     const div = document.getElementById(divID);    
     if(currentSongPlaying === ''){
         currentSongPlaying = divID;
-        div.classList.add("clicked");               
+        div.classList.add("clicked");  
+        window.open(songObj.url, songObj.title , "height=500,width=500");             
     }
     else{
         const lastPlayedSongDiv = document.getElementById(currentSongPlaying);
         currentSongPlaying = divID;
         lastPlayedSongDiv.classList.remove("clicked");
-        div.classList.add("clicked"); 
+        div.classList.add("clicked");
+        window.open(songObj.url, songObj.title , "height=500,width=500"); 
     }
 }
 
@@ -26,8 +28,8 @@ function playSong(songId) {
 /**
  * Creates a song DOM element based on a song object.
  */
-function createSongElement({ id, title, album, artist, duration, coverArt }) {
-    const children = [coverArt, title, duration, album, artist, id]
+function createSongElement({ id, title, album, artist, duration, coverArt, url }) {
+    const children = [coverArt, title, duration, album, artist, id, url]
     const classes = ["coverArt", "title", "duration", "album", "artist", "id"]
     const attrs = { onclick: `playSong(${id})` }
     return createElement("div", children, classes, attrs, "song")

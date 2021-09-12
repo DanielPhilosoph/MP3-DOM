@@ -7,6 +7,7 @@ function addSongIntoTable(arrOfValues, classes, attributes){
     const SONG_ALBUM = 3;    
     const SONG_ARTIST = 4;
     const SONG_ID = 5;
+    const SONG_URL = 6;
     const table = document.createElement("table");    
     table.classList.add("songs-table");    
     let attributeKeysArr = Object.keys(attributes);
@@ -16,7 +17,7 @@ function addSongIntoTable(arrOfValues, classes, attributes){
     }
     let row = document.createElement("tr");
     for(let index in arrOfValues){ 
-        if(index != SONG_ID){
+        if(index != SONG_ID && index != SONG_URL){
             if(index == SONG_ALBUM || index == SONG_ARTIST){
                 row = document.createElement("tr");
             }           
