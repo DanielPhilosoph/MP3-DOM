@@ -4,28 +4,29 @@
  *
  * @param {String} songId - the ID of the song to play
  */
+let currentSongPlaying = "";
 function playSong(songId) {
-    // Your code here
+    
 }
 
 /**
  * Creates a song DOM element based on a song object.
  */
 function createSongElement({ id, title, album, artist, duration, coverArt }) {
-    const children = []
-    const classes = []
+    const children = [coverArt, title, duration, album, artist, id]
+    const classes = ["coverArt", "title", "duration", "album", "artist", "id"]
     const attrs = { onclick: `playSong(${id})` }
-    return createElement("div", children, classes, attrs)
+    return createElement("div", children, classes, attrs, "song")
 }
 
 /**
  * Creates a playlist DOM element based on a playlist object.
  */
 function createPlaylistElement({ id, name, songs }) {
-    const children = []
-    const classes = []
+    const children = [name, id, songs]
+    const classes = ["name", "id", "songs"]
     const attrs = {}
-    return createElement("div", children, classes, attrs)
+    return createElement("div", children, classes, attrs, "playlist")
 }
 
 /**
@@ -40,8 +41,25 @@ function createPlaylistElement({ id, name, songs }) {
  * @param {Array} classes - the class list of the new element
  * @param {Object} attributes - the attributes for the new element
  */
-function createElement(tagName, children = [], classes = [], attributes = {}) {
-    // Your code here
+function createElement(tagName, children = [], classes = [], attributes = {}, type) {
+    
 }
 
-// You can write more code below this line
+
+function main(player){
+    sortSongByTitle();
+    sortPlaylistByTitle();
+    player.songs.forEach(song => {
+        const div = createSongElement(song);
+        div.setAttribute("id", "song" + song.id);
+        document.getElementById('songs').appendChild(div);
+    });
+    player.playlists.forEach(playlist => {
+        document.getElementById('playlists').appendChild(createPlaylistElement(playlist));
+    });
+}
+
+main(player);
+
+
+

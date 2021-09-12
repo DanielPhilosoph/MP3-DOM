@@ -1,1 +1,100 @@
-/* Your code here */
+.id{
+    color:black;
+    font-size: 12px;
+}
+.coverArt{
+    color:black;  
+    height: 100px;
+    width: 100px;  
+}
+.title{
+    color:black;
+    font-size: 24px;
+    font-weight: bold;
+}
+.artist{
+    color:black;
+    font-size: 18px;    
+}
+.album{
+    color:black;
+    font-size: 18px;
+}
+.duration{
+    color:black;
+    font-size: 20px;
+    text-align: right;
+}
+.songs-table{
+    width: 100%;
+}
+.song-div-list{
+    border-style: groove;
+    border-color: light-gray;
+    margin: auto;
+    width: 70%;
+    padding: 6px 20px;  
+}
+.song-div-list:hover{
+    border-left: 10px solid green;  
+    background-color: aquamarine;  
+
+}
+.duration-0-120{
+    color:green;
+}
+.duration-420{
+    color: red;
+}
+.playlist-div-list{
+    border-style: groove;
+    border-color: light-gray;
+    margin: auto;
+    width: 70%;
+    padding: 6px 20px;  
+}
+.playlist-div-list:hover{
+    border-left: 10px solid green;  
+    background-color: aquamarine;  
+
+}
+.number-of-songs{    
+    color:black;
+    font-size: 14px; 
+    text-align: right;
+    font-weight: bold;
+}
+.songs{
+    text-align: right;
+}
+.name{
+    color:black;
+    font-size: 24px;
+    font-weight: bold;
+}
+.clicked{
+    background-color: darkcyan;
+    border-left: 10px solid lightgreen; 
+}
+.center{
+    text-align: center;
+}
+.section-div{
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	width: 100%;
+    padding: 12px 12px;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}

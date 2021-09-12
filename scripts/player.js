@@ -61,4 +61,13 @@ const player = {
         { id: 1, name: "Metal", songs: [1, 7, 4, 6] },
         { id: 5, name: "Israeli", songs: [4, 5] },
     ],
+    // ===> Returns the song by the ID given <===
+    findSongByID(id){    
+        return player.songs.find(songObj => songObj.id === id);        
+    },
+
+    // ===> Returns the playlist by the ID given <===
+    findPlaylistByID(id){    
+        return player.playlists.find(playlistObj => playlistObj.id === id);       
+    },
 }
