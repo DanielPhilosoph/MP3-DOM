@@ -42,7 +42,19 @@ function createPlaylistElement({ id, name, songs }) {
  * @param {Object} attributes - the attributes for the new element
  */
 function createElement(tagName, children = [], classes = [], attributes = {}, type) {
-    
+    const SONG_ID = 5;
+    const div = document.createElement(tagName);
+    if(type === "song"){     
+        div.setAttribute("id", type + children[SONG_ID]);   
+        //div.setAttribute("onclick", "playSong(4)");
+        div.classList.add("song-div-list")        
+        div.appendChild(addSongIntoTable(children, classes, attributes));
+    }
+    else if(type === "playlist"){
+        div.classList.add("playlist-div-list")
+        div.appendChild(addPlaylistIntoTable(children, classes, attributes));
+    }
+    return div;
 }
 
 
