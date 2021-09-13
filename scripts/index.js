@@ -36,12 +36,24 @@ function createSongElement({ id, title, album, artist, duration, coverArt, url }
     const children = []
     const classes = []
     const attrs = { onclick: `playSong(${id})` }
+    const TWO_MIN = 120;
+    const SEVEN_MIN = 420
 
     //Create all td before appending
     const titleTd = createElement("td", [title], ["title"], {});
     const albumTd = createElement("td", [album], ["album"], {});
-    const artistTd = createElement("td", [artist], ["artist"], {});
-    const durationTd = createElement("td", [calcPlayTime(duration)], ["duration"], {rowspan: 3});
+    const artistTd = createElement("td", [artist], ["artist"], {});    
+    let durationClasses = ["duration"];
+    console.log(durationClasses);
+    if(duration < TWO_MIN){
+        durationClasses.push("duration-0-120");
+    }
+    else if(duration > SEVEN_MIN){
+        durationClasses.push("duration-420");
+    }
+    
+    const durationTd = createElement("td", [calcPlayTime(duration)], durationClasses, {rowspan: 3});
+       
     //Td Img
     const img = createElement("img", [], ["coverArt"], {src: coverArt})
     const coverArtTd = createElement("td", [img], ["tdImgSize"], {rowspan: 3});
@@ -56,8 +68,8 @@ function createSongElement({ id, title, album, artist, duration, coverArt, url }
 
     //Push table as child and add class
     children.push(table);
-    classes.push("song-div-list")
-    return createElement("div", children, classes, attrs, "song")
+    classes.push("song-div-list");
+    return createElement("div", children, classes, attrs, "song");
 }
 
 /**
@@ -77,7 +89,7 @@ function createPlaylistElement({ id, name, songs }) {
     const numberOfSongsTd = createElement("td", [numberOfSongsString], ["number-of-songs"], {});
 
     //Create tr with td elements
-    const firstTr = createElement("tr", [nameTd, numberOfSongsTd])
+    const firstTr = createElement("tr", [nameTd, numberOfSongsTd]);
     const songsDurationTr = createElement("tr", [songsDurationTd], []);
 
     //Create table and append all tr
@@ -85,8 +97,8 @@ function createPlaylistElement({ id, name, songs }) {
 
     //Push table into childern and add class
     children.push(table);
-    classes.push("playlist-div-list")
-    return createElement("div", children, classes, attrs, "playlist")
+    classes.push("playlist-div-list");
+    return createElement("div", children, classes, attrs, "playlist");
 }
 
 /**
