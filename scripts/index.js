@@ -7,20 +7,24 @@
 let currentSongPlaying = "";
 function playSong(songId) {
     const songObj = player.findSongByID(songId);
+    //Log the song info in format.
     console.log("Playing " + songObj.title + " from " + songObj.album + " by " + songObj.artist + " | " + calcPlayTime(songObj.duration) + "."); 
+
     const divID = "song" + songId;   
     const div = document.getElementById(divID);    
     if(currentSongPlaying === ''){
         currentSongPlaying = divID;
         div.classList.add("clicked");  
-        window.open(songObj.url, songObj.title , "height=500,width=500");             
+        //Open Video
+        window.open(songObj.url, songObj.title , "height=500,width=500");                  
     }
     else{
         const lastPlayedSongDiv = document.getElementById(currentSongPlaying);
         currentSongPlaying = divID;
         lastPlayedSongDiv.classList.remove("clicked");
         div.classList.add("clicked");
-        window.open(songObj.url, songObj.title , "height=500,width=500"); 
+        //Open Video
+        window.open(songObj.url, songObj.title , "height=500,width=500");         
     }
 }
 

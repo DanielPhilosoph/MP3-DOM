@@ -62,7 +62,7 @@ const player = {
             artist: "Wintersun",
             duration: 811,
             coverArt: "./images/cover_art/wintersun_sons_of_winter_and_stars.jpg",
-            url: "https://www.youtube.com/watch?v=ttoJ-Ro0L04"
+            url: "https://www.youtube.com/watch?v=Tl5T-glTdXw"
         },
     ],
     playlists: [
