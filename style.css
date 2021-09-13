@@ -1,6 +1,6 @@
-.id{
-    color:black;
-    font-size: 12px;
+.tdImgSize{
+    height: 100px;
+    width: 100px;
 }
 .coverArt{
     color:black;  
@@ -58,11 +58,12 @@
     background-color: aquamarine;  
 
 }
-.number-of-songs{    
+.number-of-songs{  
+    text-align: right ; 
     color:black;
-    font-size: 14px; 
-    text-align: right;
+    font-size: 14px;     
     font-weight: bold;
+    width: 100%;;
 }
 .songs{
     text-align: right;

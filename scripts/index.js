@@ -29,9 +29,30 @@ function playSong(songId) {
  * Creates a song DOM element based on a song object.
  */
 function createSongElement({ id, title, album, artist, duration, coverArt, url }) {
-    const children = [coverArt, title, duration, album, artist, id, url]
-    const classes = ["coverArt", "title", "duration", "album", "artist", "id"]
+    const children = []
+    const classes = []
     const attrs = { onclick: `playSong(${id})` }
+
+    //Create all td before appending
+    const titleTd = createElement("td", [title], ["title"], {});
+    const albumTd = createElement("td", [album], ["album"], {});
+    const artistTd = createElement("td", [artist], ["artist"], {});
+    const durationTd = createElement("td", [calcPlayTime(duration)], ["duration"], {rowspan: 3});
+    //Td Img
+    const img = createElement("img", [], ["coverArt"], {src: coverArt})
+    const coverArtTd = createElement("td", [img], ["tdImgSize"], {rowspan: 3});
+    
+    //Creating tr and appending them in order
+    const firstTr = createElement("tr", [coverArtTd, titleTd, durationTd]);
+    const albumTr = createElement("tr", [albumTd]);
+    const artistTr = createElement("tr", [artistTd]);
+
+    //Create table and appending tr into it.
+    const table = createElement("table", [firstTr, albumTr, artistTr], ["songs-table"], {});
+
+    //Push table as child and add class
+    children.push(table);
+    classes.push("song-div-list")
     return createElement("div", children, classes, attrs, "song")
 }
 
@@ -39,9 +60,28 @@ function createSongElement({ id, title, album, artist, duration, coverArt, url }
  * Creates a playlist DOM element based on a playlist object.
  */
 function createPlaylistElement({ id, name, songs }) {
-    const children = [name, id, songs]
-    const classes = ["name", "id", "songs"]
+    const children = []
+    const classes = []
     const attrs = {}
+    //Set up consts
+    const songsDurationTime = calcPlayTime(playlistDuration(id));
+    const numberOfSongsString = songs.length + " Songs";
+
+    //Create td before iappending
+    const nameTd = createElement("td", [name], ["name"], {rowspan: 2});
+    const songsDurationTd = createElement("td", [songsDurationTime], ["songs"], {});
+    const numberOfSongsTd = createElement("td", [numberOfSongsString], ["number-of-songs"], {});
+
+    //Create tr with td elements
+    const firstTr = createElement("tr", [nameTd, numberOfSongsTd])
+    const songsDurationTr = createElement("tr", [songsDurationTd], []);
+
+    //Create table and append all tr
+    const table = createElement("table", [firstTr, songsDurationTr], ["playlist-table"], {});
+
+    //Push table into childern and add class
+    children.push(table);
+    classes.push("playlist-div-list")
     return createElement("div", children, classes, attrs, "playlist")
 }
 
@@ -58,19 +98,23 @@ function createPlaylistElement({ id, name, songs }) {
  * @param {Object} attributes - the attributes for the new element
  */
 function createElement(tagName, children = [], classes = [], attributes = {}, type) {
-    const SONG_ID = 5;
-    const div = document.createElement(tagName);
-    if(type === "song"){     
-        div.setAttribute("id", type + children[SONG_ID]);   
-        //div.setAttribute("onclick", "playSong(4)");
-        div.classList.add("song-div-list")        
-        div.appendChild(addSongIntoTable(children, classes, attributes));
+    
+    const myElement = document.createElement(tagName);
+
+    for(const child of children){
+        myElement.append(child);
     }
-    else if(type === "playlist"){
-        div.classList.add("playlist-div-list")
-        div.appendChild(addPlaylistIntoTable(children, classes, attributes));
+
+    for(const cls of classes){
+        myElement.classList.add(cls);
     }
-    return div;
+
+    for (const attr in attributes) {
+        myElement.setAttribute(attr, attributes[attr]);
+      }
+
+    return myElement;    
+
 }
 
 
