@@ -5,25 +5,68 @@
  * @param {String} songId - the ID of the song to play
  */
 let currentSongPlaying = "";
+let timeOut;
 function playSong(songId) {
     const songObj = player.findSongByID(songId);
     //Log the song info in format.
     console.log("Playing " + songObj.title + " from " + songObj.album + " by " + songObj.artist + " | " + calcPlayTime(songObj.duration) + "."); 
 
     const divID = "song" + songId;   
-    const div = document.getElementById(divID);    
+    const div = document.getElementById(divID);  
+    // If first song clicked
     if(currentSongPlaying === ''){
         currentSongPlaying = divID;
-        div.classList.add("clicked");                         
+        div.classList.add("clicked");
+        const index = songOrderArray.indexOf(songId);   
+        // If wasn't the last song           
+        if(index != songOrderArray.length - 1){            
+            timeOut = setTimeout( 
+                function() {
+                    const nextSong = songOrderArray[index + 1];
+                    playSong(nextSong);                
+                }, 
+                songObj.duration * MILI_SECONDS_TO_SECONDS);
+        } 
+        else{
+            clearTimeout(timeOut);  
+            lastPlayedSongDiv.classList.remove("clicked");   
+            timeOut = setTimeout(removeLastSongClass, songObj.duration * MILI_SECONDS_TO_SECONDS)       
+        }           
+                               
     }
+    // Second song clicked or more
     else{
         const lastPlayedSongDiv = document.getElementById(currentSongPlaying);
         currentSongPlaying = divID;
+        // Remove class from previous song
         if(lastPlayedSongDiv !== null){
             lastPlayedSongDiv.classList.remove("clicked");
         }              
-        div.classList.add("clicked");        
+        div.classList.add("clicked");
+        const index = songOrderArray.indexOf(songId); 
+        // If wasn't the last song  
+        if(index != songOrderArray.length - 1){
+            clearTimeout(timeOut);
+            timeOut = setTimeout(
+                function() {
+                    const nextSong = songOrderArray[index + 1];
+                    playSong(nextSong);                
+                }, 
+                songObj.duration * MILI_SECONDS_TO_SECONDS);
+        }    
+        else{
+            clearTimeout(timeOut);  
+            lastPlayedSongDiv.classList.remove("clicked");   
+            timeOut = setTimeout(removeLastSongClass, songObj.duration * MILI_SECONDS_TO_SECONDS)       
+        }    
     }
+}
+
+function removeLastSongClass(){
+    const lastSongId = songOrderArray[songOrderArray.length-1];
+    const divId = "song" + lastSongId;
+    const lastPlayedSongDiv = document.getElementById(divId);
+    lastPlayedSongDiv.classList.remove("clicked"); 
 }
 
 
@@ -220,6 +263,7 @@ function createElement(tagName, children = [], classes = [], attributes = {}, ev
         div.setAttribute("id", "song" + song.id);
         div.addEventListener("click", handleSongClickEvent)
         document.getElementById('songs').appendChild(div);
+        songOrderArray.push(song.id);
     });
 }
 
@@ -260,15 +304,18 @@ function generatePlaylists() {
   }
 
 
-function main(){
-    sortSongByTitle();
+function main(){    
     sortPlaylistByTitle();
+    sortSongByTitle();
     generateSongs();
     generatePlaylists();   
-    document.getElementById("add-button").addEventListener("click", handleAddSongEvent) 
+    document.getElementById("add-button").addEventListener("click", handleAddSongEvent)     
 }
 
+// Global Consts
 const MAX_SONGS = 1000;
+const songOrderArray = [];
+const MILI_SECONDS_TO_SECONDS = 1000;
 main();
 
 
