@@ -30,8 +30,7 @@ function playSong(songId) {
  * @param {Number} songId - the ID of the song to remove
  */
 function removeSong(songId) {
-    const songObj = player.findSongByID(songId);
-    const songsDiv = document.getElementById("songs");
+    const songObj = player.findSongByID(songId);    
     if(confirm(`Are you sure you want to remove the song ${songObj.title}?`)){
         //remove song
         player.songs.forEach((Obj, index) => {
@@ -43,12 +42,37 @@ function removeSong(songId) {
                 if(index > -1){
                   playlistObj.songs.splice(index, 1);
                 }
+                if(playlistObj.songs.length === 0){
+                    removePlaylist(playlistObj.id);
+                }                
               });  
             }            
-        });
-        songsDiv.innerHTML = "";
-        generateSongs();
+        });    
+        updatePage();    
     }
+}
+
+/**
+ * Deletes playlist from player
+ */
+function removePlaylist(id) {        
+    player.playlists.forEach((Obj, index) => {
+      if(Obj.id === id){
+        player.playlists.splice(index, 1);      
+      }  
+    });      
+  }
+
+/**
+ * Updates page info
+ */
+function updatePage(){
+    const songsDiv = document.getElementById("songs");
+    const playlistDiv = document.getElementById("playlists");
+    songsDiv.innerHTML = "";
+    playlistDiv.innerHTML = "";
+    generatePlaylists();
+    generateSongs();
 }
 
 
