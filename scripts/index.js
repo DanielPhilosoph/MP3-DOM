@@ -19,10 +19,32 @@ function playSong(songId) {
     else{
         const lastPlayedSongDiv = document.getElementById(currentSongPlaying);
         currentSongPlaying = divID;
-        lastPlayedSongDiv.classList.remove("clicked");
+        if(lastPlayedSongDiv !== null){
+            lastPlayedSongDiv.classList.remove("clicked");
+        }              
         div.classList.add("clicked");        
     }
 }
+
+
+/**
+ * Acts on a click event on an element inside the songs list.
+ * Should handle clicks on play buttons and remove buttons of songs.
+ *
+ * @param {MouseEvent} event - the click event
+ */
+ function handleSongClickEvent(event) {
+    const divId = event.currentTarget.id;   
+    const songID = divId.substring(4)
+    const element = event.target;    
+    if (element.className === "remove-button"){
+        removeSong(parseInt(songID));
+    }
+    else if(element.className === "play-button"){
+        playSong(parseInt(songID))
+    }    
+ }
+
 
 /**
  * Removes a song from the player, and updates the DOM to match.
@@ -57,11 +79,11 @@ function removeSong(songId) {
  */
 function removePlaylist(id) {        
     player.playlists.forEach((Obj, index) => {
-      if(Obj.id === id){
+        if(Obj.id === id){
         player.playlists.splice(index, 1);      
-      }  
+        }  
     });      
-  }
+}
 
 /**
  * Updates page info
@@ -100,8 +122,8 @@ function createSongElement({ id, title, album, artist, duration, coverArt }) {
     }
     
     const durationTd = createElement("td", [calcPlayTime(duration)], durationClasses, {rowspan: 2});
-    const playButton = createElement("button", ['🎶'], ["play-button"], {}, {click: ()=>playSong(id) }); 
-    const removeButton = createElement("button", ['❌'], ["remove-button"], {}, {click: ()=>removeSong(id) }); 
+    const playButton = createElement("button", ['🎶'], ["play-button"]); 
+    const removeButton = createElement("button", ['❌'], ["remove-button"]); 
     const buttonsTd = createElement("td", [playButton, removeButton]);
        
     //Td Img
@@ -196,6 +218,7 @@ function createElement(tagName, children = [], classes = [], attributes = {}, ev
     player.songs.forEach(song => {
         const div = createSongElement(song);
         div.setAttribute("id", "song" + song.id);
+        div.addEventListener("click", handleSongClickEvent)
         document.getElementById('songs').appendChild(div);
     });
 }
