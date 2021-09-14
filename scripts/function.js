@@ -28,6 +28,7 @@ function calcPlayTime(durationTime) {
     return numberAsString1 + min + ":" + numberAsString2 + sec;
   }
 
+// Calc playlist duration - return in seconds
 function playlistDuration(id) {      
     const myPlaylist = player.findPlaylistByID(id);
     let durationInSeconds = 0;
@@ -36,3 +37,12 @@ function playlistDuration(id) {
     });
     return durationInSeconds;  
 }
+
+// ===> Convert MM:SS to Seconds <===
+function convertTimeToSec(duration){
+    const newDuration = duration.split(":")
+    return parseInt(newDuration[0]) * 60 + parseInt(newDuration[1]);
+}
+
+
+  

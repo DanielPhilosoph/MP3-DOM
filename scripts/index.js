@@ -232,15 +232,44 @@ function generatePlaylists() {
     });
 }
 
+/**
+ * Handles a click event on the button that adds songs.
+ *
+ * @param {MouseEvent} event - the click event
+ */
+ function handleAddSongEvent(event) {    
+   const title = document.getElementById("title").value; 
+   const album = document.getElementById("album").value;   
+   const artist = document.getElementById("artist").value;   
+   let duration = document.getElementById("duration").value;   
+   const coverArt = document.getElementById("cover-art").value; 
+   
+   duration = convertTimeToSec(duration);
+   let id = generateSongID();
+   player.songs.push({title, album, duration, artist, coverArt, id});
+   updatePage();
+ }  
+    
+ function generateSongID(){
+    for (i=1; i < MAX_SONGS; i++) {
+      const songObj = player.findSongByID(i);    
+      if(songObj === undefined)      
+        return i;
+    }
+    alert("Sorry, Songs reached max capacity");
+  }
 
-function main(player){
+
+function main(){
     sortSongByTitle();
     sortPlaylistByTitle();
     generateSongs();
-    generatePlaylists();    
+    generatePlaylists();   
+    document.getElementById("add-button").addEventListener("click", handleAddSongEvent) 
 }
 
-main(player);
+const MAX_SONGS = 1000;
+main();
 
 
 

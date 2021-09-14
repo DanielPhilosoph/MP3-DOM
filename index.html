@@ -15,16 +15,52 @@
                 <h1 class="center">My Songs</h1>
             </header>
         </div>
+        <br>
         <div id="songs" class="songs-div">
             
         </div>
+        <br>
         <div class="section-div">
             <header>
                 <h1 class="center">My Playlists</h1>
             </header>
         </div>
+        <br>
         <div id="playlists">
             
+        </div>
+        <br>
+        <div id="add-section">
+            <h2 class="center">Add a new song</h2>
+            <div id="inputs">
+                <table class="add-table">
+                    <tr>
+                        <td>Title: </td>
+                        <td><input id="title" placeholder="Title" required minlength="3" maxlength="10"></td>                        
+                    </tr>
+                    <tr>
+                        <td>Album: </td>
+                        <td><input id="album" placeholder="Album" ></td>
+                        <td><label></label></td>
+                    </tr>
+                    <tr>
+                        <td>Artist: </td>
+                        <td><input id="artist" placeholder="Artist" ></td>
+                        <td><label></label></td>
+                    </tr>
+                    <tr>
+                        <td>Duration: </td>
+                        <td><input id="duration" placeholder="Duration (mm:ss)"></td>
+                        <td><label></label></td>
+                    </tr>
+                    <tr>
+                        <td>Cover art: </td>
+                        <td><input id="cover-art" placeholder="Cover art link"></td>
+                        <td><label></label></td>
+                    </tr>
+                </table>                
+            </div>
+            <button id="add-button" type="submit" class="center">Add</button>
         </div>        
     </body>
 </html>
