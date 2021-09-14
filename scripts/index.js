@@ -24,6 +24,18 @@ function playSong(songId) {
     }
 }
 
+/**
+ * Removes a song from the player, and updates the DOM to match.
+ *
+ * @param {Number} songId - the ID of the song to remove
+ */
+function removeSong(songId) {
+    const songObj = player.findSongByID(songId);
+    if(confirm(`Are you sure you want to remove the song ${songObj.title}?`)){
+        //remove song
+    }
+}
+
 
 /**
  * Creates a song DOM element based on a song object.
@@ -32,7 +44,7 @@ function createSongElement({ id, title, album, artist, duration, coverArt }) {
     const children = []
     const classes = []
     const attrs = {}
-    const eventListeners = { click: ()=>playSong(id) }
+    const eventListeners = {}
     const TWO_MIN = 120;
     const SEVEN_MIN = 420
 
@@ -48,7 +60,10 @@ function createSongElement({ id, title, album, artist, duration, coverArt }) {
         durationClasses.push("duration-420");
     }
     
-    const durationTd = createElement("td", [calcPlayTime(duration)], durationClasses, {rowspan: 3});
+    const durationTd = createElement("td", [calcPlayTime(duration)], durationClasses, {rowspan: 2});
+    const playButton = createElement("button", ['🎶'], ["play-button"], {}, {click: ()=>playSong(id) }); 
+    const removeButton = createElement("button", ['❌'], ["remove-button"], {}, {click: ()=>removeSong(id) }); 
+    const buttonsTd = createElement("td", [playButton, removeButton]);
        
     //Td Img
     const img = createElement("img", [], ["coverArt"], {src: coverArt})
@@ -57,7 +72,7 @@ function createSongElement({ id, title, album, artist, duration, coverArt }) {
     //Creating tr and appending them in order
     const firstTr = createElement("tr", [coverArtTd, titleTd, durationTd]);
     const albumTr = createElement("tr", [albumTd]);
-    const artistTr = createElement("tr", [artistTd]);
+    const artistTr = createElement("tr", [artistTd, buttonsTd]);
 
     //Create table and appending tr into it.
     const table = createElement("table", [firstTr, albumTr, artistTr], ["songs-table"], {});

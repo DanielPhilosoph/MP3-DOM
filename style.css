@@ -38,6 +38,15 @@
     box-shadow: 1px 3px 3px 1px gray;
 
 }
+.remove-button{
+    float: right;
+    padding: 5px 5px;
+    margin-right: 4px;
+}
+.play-button{
+    float: right;
+    padding: 5px 5px;
+}
 .duration-0-120{
     color:green;
 }
