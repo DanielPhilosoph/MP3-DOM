@@ -35,8 +35,7 @@
     padding: 6px 20px;  
 }
 .song-div-list:hover{
-    border-left: 10px solid green;  
-    background-color: aquamarine;  
+    box-shadow: 1px 3px 3px 1px gray;
 
 }
 .duration-0-120{
@@ -53,8 +52,7 @@
     padding: 6px 20px;  
 }
 .playlist-div-list:hover{
-    border-left: 10px solid green;  
-    background-color: aquamarine;  
+    box-shadow: 1px 3px 3px 1px gray;
 
 }
 .number-of-songs{  

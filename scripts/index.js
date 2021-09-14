@@ -15,16 +15,14 @@ function playSong(songId) {
     if(currentSongPlaying === ''){
         currentSongPlaying = divID;
         div.classList.add("clicked");  
-        //Open Video
-        window.open(songObj.url, songObj.title , "height=500,width=500");                  
+                       
     }
     else{
         const lastPlayedSongDiv = document.getElementById(currentSongPlaying);
         currentSongPlaying = divID;
         lastPlayedSongDiv.classList.remove("clicked");
         div.classList.add("clicked");
-        //Open Video
-        window.open(songObj.url, songObj.title , "height=500,width=500");         
+        
     }
 }
 
@@ -32,7 +30,7 @@ function playSong(songId) {
 /**
  * Creates a song DOM element based on a song object.
  */
-function createSongElement({ id, title, album, artist, duration, coverArt, url }) {
+function createSongElement({ id, title, album, artist, duration, coverArt }) {
     const children = []
     const classes = []
     const attrs = { onclick: `playSong(${id})` }
