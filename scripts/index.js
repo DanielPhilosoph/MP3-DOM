@@ -31,8 +31,23 @@ function playSong(songId) {
  */
 function removeSong(songId) {
     const songObj = player.findSongByID(songId);
+    const songsDiv = document.getElementById("songs");
     if(confirm(`Are you sure you want to remove the song ${songObj.title}?`)){
         //remove song
+        player.songs.forEach((Obj, index) => {
+            if(Obj.id === songId){
+              player.songs.splice(index, 1);
+              // Song Existed - remove from all playlists
+              player.playlists.forEach(playlistObj => {
+                const index = playlistObj.songs.indexOf(songId);
+                if(index > -1){
+                  playlistObj.songs.splice(index, 1);
+                }
+              });  
+            }            
+        });
+        songsDiv.innerHTML = "";
+        generateSongs();
     }
 }
 
@@ -142,8 +157,7 @@ function createElement(tagName, children = [], classes = [], attributes = {}, ev
     }
 
     for (const listener in eventListeners){        
-        const functionArray = eventListeners[listener];      
-        console.log(functionArray);  
+        const functionArray = eventListeners[listener];                
         myElement.addEventListener(listener, functionArray);
     }
 
@@ -151,18 +165,32 @@ function createElement(tagName, children = [], classes = [], attributes = {}, ev
 
 }
 
-
-function main(player){
-    sortSongByTitle();
-    sortPlaylistByTitle();
+/**
+ * Inserts all songs in the player as DOM elements into the songs list.
+ */
+ function generateSongs() {
     player.songs.forEach(song => {
         const div = createSongElement(song);
         div.setAttribute("id", "song" + song.id);
         document.getElementById('songs').appendChild(div);
     });
+}
+
+/**
+ * Inserts all playlists in the player as DOM elements into the playlists list.
+ */
+function generatePlaylists() {
     player.playlists.forEach(playlist => {
         document.getElementById('playlists').appendChild(createPlaylistElement(playlist));
     });
+}
+
+
+function main(player){
+    sortSongByTitle();
+    sortPlaylistByTitle();
+    generateSongs();
+    generatePlaylists();    
 }
 
 main(player);
