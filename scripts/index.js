@@ -14,15 +14,13 @@ function playSong(songId) {
     const div = document.getElementById(divID);    
     if(currentSongPlaying === ''){
         currentSongPlaying = divID;
-        div.classList.add("clicked");  
-                       
+        div.classList.add("clicked");                         
     }
     else{
         const lastPlayedSongDiv = document.getElementById(currentSongPlaying);
         currentSongPlaying = divID;
         lastPlayedSongDiv.classList.remove("clicked");
-        div.classList.add("clicked");
-        
+        div.classList.add("clicked");        
     }
 }
 
@@ -33,7 +31,8 @@ function playSong(songId) {
 function createSongElement({ id, title, album, artist, duration, coverArt }) {
     const children = []
     const classes = []
-    const attrs = { onclick: `playSong(${id})` }
+    const attrs = {}
+    const eventListeners = { click: ()=>playSong(id) }
     const TWO_MIN = 120;
     const SEVEN_MIN = 420
 
@@ -41,8 +40,7 @@ function createSongElement({ id, title, album, artist, duration, coverArt }) {
     const titleTd = createElement("td", [title], ["title"], {});
     const albumTd = createElement("td", [album], ["album"], {});
     const artistTd = createElement("td", [artist], ["artist"], {});    
-    let durationClasses = ["duration"];
-    console.log(durationClasses);
+    let durationClasses = ["duration"];    
     if(duration < TWO_MIN){
         durationClasses.push("duration-0-120");
     }
@@ -67,7 +65,7 @@ function createSongElement({ id, title, album, artist, duration, coverArt }) {
     //Push table as child and add class
     children.push(table);
     classes.push("song-div-list");
-    return createElement("div", children, classes, attrs, "song");
+    return createElement("div", children, classes, attrs, eventListeners);
 }
 
 /**
@@ -77,6 +75,7 @@ function createPlaylistElement({ id, name, songs }) {
     const children = []
     const classes = []
     const attrs = {}
+    const eventListeners = {}
     //Set up consts
     const songsDurationTime = calcPlayTime(playlistDuration(id));
     const numberOfSongsString = songs.length + " Songs";
@@ -96,7 +95,7 @@ function createPlaylistElement({ id, name, songs }) {
     //Push table into childern and add class
     children.push(table);
     classes.push("playlist-div-list");
-    return createElement("div", children, classes, attrs, "playlist");
+    return createElement("div", children, classes, attrs, eventListeners);
 }
 
 /**
@@ -111,7 +110,7 @@ function createPlaylistElement({ id, name, songs }) {
  * @param {Array} classes - the class list of the new element
  * @param {Object} attributes - the attributes for the new element
  */
-function createElement(tagName, children = [], classes = [], attributes = {}, type) {
+function createElement(tagName, children = [], classes = [], attributes = {}, eventListeners = {}) {
     
     const myElement = document.createElement(tagName);
 
@@ -125,7 +124,13 @@ function createElement(tagName, children = [], classes = [], attributes = {}, ty
 
     for (const attr in attributes) {
         myElement.setAttribute(attr, attributes[attr]);
-      }
+    }
+
+    for (const listener in eventListeners){        
+        const functionArray = eventListeners[listener];      
+        console.log(functionArray);  
+        myElement.addEventListener(listener, functionArray);
+    }
 
     return myElement;    
 
