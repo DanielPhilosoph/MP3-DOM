@@ -44,5 +44,75 @@ function convertTimeToSec(duration){
     return parseInt(newDuration[0]) * 60 + parseInt(newDuration[1]);
 }
 
+function titleValidation(title){
+    const error = document.getElementById("title-error");
+    if(title.length === 0){
+        error.textContent = "Title is required";
+        return false;
+    }
+    else if(title.length < 2){
+        error.textContent = "Title is to short";
+        return false;
+    }
+    else{
+        error.textContent = "";
+        return true;
+    }
+}
+function albumValidation(album){
+    const error = document.getElementById("album-error");
+    if(album.length === 0){
+        error.textContent = "Album is required";
+        return false;
+    }
+    else if(album.length < 2){
+        error.textContent = "Album is to short";
+        return false;
+    }
+    else{
+        error.textContent = "";
+        return true;
+    }
+}
+function  artistValidation(artist){
+    const error = document.getElementById("artist-error");
+    if(artist.length === 0){
+        error.textContent = "Artist is required";
+        return false;
+    }
+    else if(artist.length < 2){
+        error.textContent = "Artist is to short";
+        return false;
+    }
+    else{
+        error.textContent = "";
+        return true;
+    }
+}
+function  durationValidation(duration){
+    const error = document.getElementById("duration-error");
+    const regex = new RegExp('^[0-9]{2}:[0-9]{2}$');
+    if(!regex.test(duration)){
+        error.textContent = "Duration is not valid format (MM:SS) :" + duration;  
+        return false;
+    }
+    else{
+        error.textContent = "";
+        return true;
+    }
+        
+}
+function coverArtValidation(coverArt){
+    const error = document.getElementById("cover-art-error");
+    if(coverArt.length === 0){
+        error.textContent = "Cover art is required";
+        return false;
+    }
+    else{
+        error.textContent  = "";
+        return true;
+    }
+}
+
 
   

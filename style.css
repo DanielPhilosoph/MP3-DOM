@@ -32,11 +32,12 @@
     border-color: light-gray;
     margin: auto;        
     width: 70%;
-    padding: 6px 20px;  
+    padding: 6px 20px;
+    background-color: white;  
 }
 .song-div-list:hover{
-    box-shadow: 1px 3px 3px 1px gray;
-
+    box-shadow: 6px 6px 6px 6px gray;
+    border-color: yellowgreen;
 }
 .remove-button{
     float: right;
@@ -59,10 +60,11 @@
     margin: auto;
     width: 70%;
     padding: 6px 20px;  
+    background-color: white; 
 }
 .playlist-div-list:hover{
     box-shadow: 1px 3px 3px 1px gray;
-
+    border-color: yellowgreen;
 }
 .number-of-songs{  
     text-align: right ; 
@@ -87,6 +89,12 @@
     text-align: center;
     margin: auto;
 }
+.songs-div{
+    background-image: url("./images/bg.jpg");
+    background-size:100%;
+    margin-right: -10px;
+    margin-left: -10px;
+}
 .section-div{
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 	background-size: 400% 400%;
@@ -96,7 +104,12 @@
     margin-left: -20px;
     padding: 20px 20px;
 }
-
+.playlist-div{
+    background-image: url("./images/bg.jpg");
+    background-size:100%;
+    margin-right: -10px;
+    margin-left: -10px;
+}
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;
@@ -119,11 +132,13 @@
 #add-section > #add-button{
     text-align: center;
     margin:auto;
-    display: flex;  
+    display: flex; 
+    margin-top: 15px; 
 }
 .add-table{
     margin-left: auto;
-    margin-right: auto;    
+    margin-right: auto;   
+    margin-top: 30px; 
 }
 .input{
     border-radius: 5px;
@@ -170,5 +185,9 @@
 .add-button:hover{
     background-color: #FE9E76;
     color: white;
+}
+.error{
+    font-size: 10px;
+    color: red;
 }
 

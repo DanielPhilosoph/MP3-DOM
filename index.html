@@ -15,21 +15,21 @@
                 <h1 class="center">My Songs</h1>
             </header>
         </div>
-        <br>
+        
         <div id="songs" class="songs-div">
             
         </div>
-        <br>
+        
         <div class="section-div">
             <header>
                 <h1 class="center">My Playlists</h1>
             </header>
         </div>
-        <br>
-        <div id="playlists">
+        
+        <div id="playlists" class="playlist-div">
             
         </div>
-        <br>
+        
         <div id="add-section">
             <div class="div-main-label-add">
                 <h2 class="center main-label-add">Add a new song</h2>
@@ -38,23 +38,28 @@
                 <table class="add-table">
                     <tr>
                         <td class="add-section-labels">Title: </td>
-                        <td><input id="title" placeholder="Title" class="input"></td>                        
+                        <td><input id="title" placeholder="Title" class="input"></td>   
+                        <td><label id="title-error" class="error"></label></td>                     
                     </tr>
                     <tr>
                         <td class="add-section-labels">Album: </td>
-                        <td><input id="album" placeholder="Album" class="input"></td>                        
+                        <td><input id="album" placeholder="Album" class="input"></td>  
+                        <td><label id="album-error" class="error"></label></td>                        
                     </tr>
                     <tr>
                         <td class="add-section-labels">Artist: </td>
-                        <td><input id="artist" placeholder="Artist" class="input"></td>                        
+                        <td><input id="artist" placeholder="Artist" class="input"></td> 
+                        <td><label id="artist-error" class="error"></label></td>                         
                     </tr>
                     <tr>
                         <td class="add-section-labels">Duration: </td>
-                        <td><input id="duration" placeholder="Duration (mm:ss)" class="input"></td>                        
+                        <td><input id="duration" placeholder="Duration (mm:ss)" class="input"></td>  
+                        <td><label id="duration-error" class="error"></label></td>                        
                     </tr>
                     <tr>
                         <td class="add-section-labels">Cover art: </td>
-                        <td><input id="cover-art" placeholder="Cover art link" class="input"></td>                        
+                        <td><input id="cover-art" placeholder="Cover art link" class="input"></td>  
+                        <td><label id="cover-art-error" class="error"></label></td>                        
                     </tr>
                 </table>                
             </div>

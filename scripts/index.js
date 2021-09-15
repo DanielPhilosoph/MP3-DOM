@@ -136,6 +136,8 @@ function updatePage(){
     const playlistDiv = document.getElementById("playlists");
     songsDiv.innerHTML = "";
     playlistDiv.innerHTML = "";
+    sortPlaylistByTitle();
+    sortSongByTitle();
     generatePlaylists();
     generateSongs();
 }
@@ -288,10 +290,17 @@ function generatePlaylists() {
    let duration = document.getElementById("duration").value;   
    const coverArt = document.getElementById("cover-art").value; 
    
-   duration = convertTimeToSec(duration);
-   let id = generateSongID();
-   player.songs.push({title, album, duration, artist, coverArt, id});
-   updatePage();
+   if(titleValidation(title) &&
+        albumValidation(album) &&
+        artistValidation(artist) &&
+        durationValidation(duration) &&
+        coverArtValidation(coverArt)
+   ){   
+        duration = convertTimeToSec(duration);   
+        let id = generateSongID();
+        player.songs.push({title, album, duration, artist, coverArt, id});
+        updatePage();
+    }
  }  
     
  function generateSongID(){
