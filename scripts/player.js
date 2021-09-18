@@ -7,6 +7,7 @@ const player = {
             artist: "Jinjer",
             duration: 242,
             coverArt: "./images/cover_art/jinjer_vortex.jpg",
+            
         },
         {
             id: 2,
@@ -15,6 +16,7 @@ const player = {
             artist: "Songleikr",
             duration: 160,
             coverArt: "./images/cover_art/songleikr_vinda.jpg",
+            
         },
         {
             id: 7,
@@ -23,6 +25,8 @@ const player = {
             artist: "Sabaton",
             duration: 213,
             coverArt: "./images/cover_art/sabaton_shiroyama.jpg",
+            
+            
         },
         {
             id: 3,
@@ -31,6 +35,7 @@ const player = {
             artist: "AC/DC",
             duration: 292,
             coverArt: "./images/cover_art/acdc_thunderstruck.jpg",
+            
         },
         {
             id: 4,
@@ -39,6 +44,7 @@ const player = {
             artist: "Orphaned Land",
             duration: 270,
             coverArt: "./images/cover_art/orphaned_land_all_is_one.jpg",
+            
         },
         {
             id: 5,
@@ -47,6 +53,7 @@ const player = {
             artist: "Full Trunk",
             duration: 259,
             coverArt: "./images/cover_art/full_trunk_as_a_stone.jpg",
+            
         },
         {
             id: 6,
@@ -55,10 +62,21 @@ const player = {
             artist: "Wintersun",
             duration: 811,
             coverArt: "./images/cover_art/wintersun_sons_of_winter_and_stars.jpg",
+            
         },
     ],
     playlists: [
         { id: 1, name: "Metal", songs: [1, 7, 4, 6] },
         { id: 5, name: "Israeli", songs: [4, 5] },
     ],
+    // ===> Returns the song by the ID given <===
+    findSongByID(id){    
+        return player.songs.find(songObj => songObj.id === id);        
+    },
+
+    // ===> Returns the playlist by the ID given <===
+    findPlaylistByID(id){    
+        return player.playlists.find(playlistObj => playlistObj.id === id);       
+    },
+
 }

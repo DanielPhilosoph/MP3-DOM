@@ -1,1 +1,193 @@
-/* Your code here */
+.tdImgSize{
+    height: 100px;
+    width: 100px;
+}
+.coverArt{
+    color:black;  
+    height: 100px;
+    width: 100px;  
+}
+.title{
+    color:black;
+    font-size: 24px;
+    font-weight: bold;
+}
+.artist{
+    color:black;
+    font-size: 18px;    
+}
+.album{
+    color:black;
+    font-size: 18px;
+}
+.duration{    
+    font-size: 20px;
+    text-align: right;
+}
+.songs-table{
+    width: 100%;
+}
+.song-div-list{
+    border-style: groove;
+    border-color: light-gray;
+    margin: auto;        
+    width: 70%;
+    padding: 6px 20px;
+    background-color: white;  
+}
+.song-div-list:hover{
+    box-shadow: 6px 6px 6px 6px gray;
+    border-color: yellowgreen;
+}
+.remove-button{
+    float: right;
+    padding: 5px 5px;
+    margin-right: 4px;
+}
+.play-button{
+    float: right;
+    padding: 5px 5px;
+}
+.duration-0-120{
+    color:green;
+}
+.duration-420{
+    color: red;
+}
+.playlist-div-list{
+    border-style: groove;
+    border-color: light-gray;
+    margin: auto;
+    width: 70%;
+    padding: 6px 20px;  
+    background-color: white; 
+}
+.playlist-div-list:hover{
+    box-shadow: 1px 3px 3px 1px gray;
+    border-color: yellowgreen;
+}
+.number-of-songs{  
+    text-align: right ; 
+    color:black;
+    font-size: 14px;     
+    font-weight: bold;
+    width: 100%;;
+}
+.songs{
+    text-align: right;
+}
+.name{
+    color:black;
+    font-size: 24px;
+    font-weight: bold;
+}
+.clicked{
+    background-color: darkcyan;
+    border-left: 10px solid lightgreen; 
+}
+.center{
+    text-align: center;
+    margin: auto;
+}
+.songs-div{
+    background-image: url("./images/bg.jpg");
+    background-size:100%;
+    margin-right: -10px;
+    margin-left: -10px;
+}
+.section-div{
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	width: 100%;            
+    margin-top: -10px;
+    margin-left: -20px;
+    padding: 20px 20px;
+}
+.playlist-div{
+    background-image: url("./images/bg.jpg");
+    background-size:100%;
+    margin-right: -10px;
+    margin-left: -10px;
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+#add-section{
+    margin:auto;    
+    display: block;      
+    height: 30em; 
+    margin-top: auto;
+    margin-left: auto;     
+}
+#add-section > #add-button{
+    text-align: center;
+    margin:auto;
+    display: flex; 
+    margin-top: 15px; 
+}
+.add-table{
+    margin-left: auto;
+    margin-right: auto;   
+    margin-top: 30px; 
+}
+.input{
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    background-color: #f1f1f1;
+    padding: 8px 10px;
+    outline: 0;
+    border-width: 3px;
+    transition: 0.3s;
+}
+.input:focus{
+    transition: 0.3s;
+    border-color: lawngreen;
+    
+}
+.add-section-labels{
+    font-size: 22px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.main-label-add{
+    font-size: 38px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  
+    margin: auto;     
+    padding-top: 30px;   
+    text-align: center; 
+}
+.div-main-label-add{   
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	width: 100%;            
+    margin-top: -10px;
+    margin-left: -20px;
+    padding: 20px 20px;
+}
+.add-button{
+    background-color: white; 
+    color: black; 
+    margin: 10px 2px;
+    padding: 13px 30px;
+    transition-duration: 0.4s;
+    border: 2px solid #FE9E76;
+}
+.add-button:hover{
+    background-color: #FE9E76;
+    color: white;
+}
+.error{
+    font-size: 10px;
+    color: red;
+}
+
