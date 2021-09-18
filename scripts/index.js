@@ -294,12 +294,11 @@ function generatePlaylists() {
         albumValidation(album) &&
         artistValidation(artist) &&
         durationValidation(duration) &&
-        coverArtValidation(coverArt)
-   ){   
-        duration = convertTimeToSec(duration);   
-        let id = generateSongID();
-        player.songs.push({title, album, duration, artist, coverArt, id});
-        updatePage();
+        coverArtValidation(coverArt)){   
+            duration = convertTimeToSec(duration);   
+            let id = generateSongID();
+            player.songs.push({title, album, duration, artist, coverArt, id});
+            updatePage();
     }
  }  
     

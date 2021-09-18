@@ -44,14 +44,23 @@ function convertTimeToSec(duration){
     return parseInt(newDuration[0]) * 60 + parseInt(newDuration[1]);
 }
 
+function stringValidation(str, type){
+    if(str.length === 0){
+        return type + " is required";        
+    }
+    else if(str.length < 2){
+        return type + " is to short";       
+    }
+    else{        
+        return true;
+    }
+}
+
 function titleValidation(title){
     const error = document.getElementById("title-error");
-    if(title.length === 0){
-        error.textContent = "Title is required";
-        return false;
-    }
-    else if(title.length < 2){
-        error.textContent = "Title is to short";
+    let errorMassage = stringValidation(title, "Title")
+    if(typeof(errorMassage) === 'string'){
+        error.textContent = errorMassage;
         return false;
     }
     else{
@@ -61,12 +70,9 @@ function titleValidation(title){
 }
 function albumValidation(album){
     const error = document.getElementById("album-error");
-    if(album.length === 0){
-        error.textContent = "Album is required";
-        return false;
-    }
-    else if(album.length < 2){
-        error.textContent = "Album is to short";
+    let errorMassage = stringValidation(album, "Album")
+    if(typeof(errorMassage) === 'string'){
+        error.textContent = errorMassage;
         return false;
     }
     else{
@@ -76,12 +82,9 @@ function albumValidation(album){
 }
 function  artistValidation(artist){
     const error = document.getElementById("artist-error");
-    if(artist.length === 0){
-        error.textContent = "Artist is required";
-        return false;
-    }
-    else if(artist.length < 2){
-        error.textContent = "Artist is to short";
+    let errorMassage = stringValidation(artist, "Artist")
+    if(typeof(errorMassage) === 'string'){
+        error.textContent = errorMassage;
         return false;
     }
     else{
